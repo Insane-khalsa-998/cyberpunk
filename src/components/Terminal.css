@@ -1,0 +1,469 @@
+/* Terminal.css */
+.terminal-container {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    margin: 5px auto 3px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.7),
+        0 0 20px rgba(0, 255, 255, 0.5),
+        0 0 30px rgba(0, 255, 255, 0.3);
+    color: #00ffff;
+    font-family: 'Rajdhani', monospace;
+    overflow: visible;
+    z-index: 10;
+    animation: terminal-glow 3s infinite alternate;
+}
+
+/* Responsive margins for different screen sizes */
+@media screen and (max-width: 576px) {
+    .terminal-container {
+        margin: 60px auto 20px; /* Smaller margins on mobile */
+        width: 95%; /* Wider on mobile */
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-container {
+        margin: 100px auto 30px;
+        /* Removed max-height constraint to allow content to fit without scrolling */
+    }
+}
+
+@keyframes terminal-glow {
+    0% {
+        box-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.7),
+            0 0 20px rgba(0, 255, 255, 0.5),
+            0 0 30px rgba(0, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 
+            0 0 15px rgba(0, 255, 255, 0.9),
+            0 0 25px rgba(0, 255, 255, 0.7),
+            0 0 35px rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* Terminal Header */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid #00ffff;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-control {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-control.close {
+    background-color: #ff3b30;
+}
+
+.terminal-control.minimize {
+    background-color: #ffcc00;
+}
+
+.terminal-control.maximize {
+    background-color: #34c759;
+}
+
+.terminal-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.terminal-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+}
+
+/* Responsive styles for terminal header */
+@media screen and (min-width: 576px) {
+    .terminal-header {
+        padding: 12px 15px;
+    }
+
+    .terminal-controls {
+        gap: 7px;
+    }
+
+    .terminal-control {
+        width: 10px;
+        height: 10px;
+    }
+
+    .terminal-title {
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .terminal-status {
+        gap: 7px;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-header {
+        padding: 15px 20px;
+    }
+
+    .terminal-controls {
+        gap: 8px;
+    }
+
+    .terminal-control {
+        width: 12px;
+        height: 12px;
+    }
+
+    .terminal-title {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .terminal-status {
+        gap: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.terminal-status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #00ffff;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Boot Sequence */
+.terminal-boot {
+    padding: 20px;
+    color: #00ffff;
+}
+
+.terminal-boot-text p {
+    margin: 5px 0;
+    font-family: monospace;
+    animation: type 0.5s steps(40, end);
+}
+
+@keyframes type {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.terminal-progress-bar {
+    margin-top: 15px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00ffff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.terminal-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    transition: width 0.3s ease;
+}
+
+/* Terminal Content */
+.terminal-content {
+    padding: 15px;
+    min-height: 200px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Responsive padding and min-height for different screen sizes */
+@media screen and (min-width: 576px) {
+    .terminal-content {
+        padding: 20px;
+        min-height: 250px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-content {
+        padding: 30px;
+        min-height: 300px;
+    }
+}
+
+.terminal-content.visible {
+    opacity: 1;
+}
+
+.terminal-content.hidden {
+    opacity: 0;
+}
+
+/* Terminal Cursor */
+.terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: #00ffff;
+    margin-left: 5px;
+    animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Terminal Footer */
+.terminal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid #00ffff;
+    font-size: 0.7rem;
+}
+
+.terminal-stats {
+    display: flex;
+    gap: 8px;
+}
+
+/* Responsive styles for terminal footer */
+@media screen and (min-width: 576px) {
+    .terminal-footer {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+
+    .terminal-stats {
+        gap: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-footer {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+    }
+
+    .terminal-stats {
+        gap: 15px;
+    }
+}
+
+/* Cyberpunk-style scan line effect */
+.terminal-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 255, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 11;
+}
+
+
+@keyframes terminal-glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Custom styling for terminal content */
+.terminal-content h1 {
+    color: #FFFF00;
+    font-family: 'Cyberpunk', 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.terminal-content h2 {
+    color: #00ffff;
+    margin: 15px 0;
+}
+
+.terminal-content p {
+    color: #cccccc;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Styling for terminal sections */
+.terminal-section.identity {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.terminal-section.identity .name-text {
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.terminal-section.skills {
+    margin-bottom: 15px;
+}
+
+.terminal-section.skills .glitch-container {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.terminal-section.bio .hero-summary {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #cccccc;
+}
+
+/* Responsive styles for terminal sections */
+@media screen and (min-width: 576px) {
+    .terminal-section.identity {
+        margin-bottom: 20px;
+    }
+
+    .terminal-section.identity .name-text {
+        font-size: 3rem;
+        line-height: 1.15;
+    }
+
+    .terminal-section.skills {
+        margin-bottom: 20px;
+    }
+
+    .terminal-section.skills .glitch-container {
+        font-size: 1.5rem;
+        margin: 8px 0;
+    }
+
+    .terminal-section.bio .hero-summary {
+        font-size: 1rem;
+        margin: 8px 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-section.identity {
+        margin-bottom: 30px;
+    }
+
+    .terminal-section.identity .name-text {
+        font-size: 4rem;
+        line-height: 1.2;
+    }
+
+    .terminal-section.skills {
+        margin-bottom: 25px;
+    }
+
+    .terminal-section.skills .glitch-container {
+        font-size: 1.8rem;
+        margin: 10px 0;
+    }
+
+    .terminal-section.bio .hero-summary {
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+}
+
+/* Terminal command line styling */
+.terminal-command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.terminal-prompt {
+    color: #00ff00;
+    margin-right: 6px;
+}
+
+.terminal-command {
+    color: #ffffff;
+    animation: typing 3s steps(40, end) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00ff00;
+    width: 0;
+}
+
+/* Responsive styles for terminal command line */
+@media screen and (min-width: 576px) {
+    .terminal-command-line {
+        margin-top: 15px;
+        font-size: 0.9rem;
+    }
+
+    .terminal-prompt {
+        margin-right: 8px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .terminal-command-line {
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+    .terminal-prompt {
+        margin-right: 10px;
+    }
+}
+
+@keyframes typing {
+    0% { width: 0 }
+    50% { width: 100% }
+    90% { width: 100% }
+    100% { width: 0 }
+}

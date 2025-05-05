@@ -1,0 +1,241 @@
+/* Footer.css */
+.footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid #00ffff;
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+    color: #cccccc;
+    font-family: 'Rajdhani', monospace;
+}
+
+/* Matrix rain effect */
+.matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.1;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 255, 0, 0.05) 50%, 
+        rgba(0, 0, 0, 0) 100%
+    );
+    animation: matrix-flow 20s linear infinite;
+}
+
+@keyframes matrix-flow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 1000px;
+    }
+}
+
+/* Add a grid pattern overlay */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* System status bar */
+.system-status {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.status-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.status-label {
+    color: #ff00ff;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.status-value {
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.status-value.online,
+.status-value.active {
+    color: #00ff00;
+    position: relative;
+    padding-left: 15px;
+}
+
+.status-value.online::before,
+.status-value.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Footer divider */
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #00ffff 50%, 
+        transparent 100%
+    );
+    margin-bottom: 20px;
+}
+
+/* Footer info */
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-link {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    transition: width 0.3s ease;
+}
+
+.social-link:hover {
+    color: #ff00ff;
+}
+
+.social-link:hover::after {
+    width: 100%;
+}
+
+/* Glitch effect on hover */
+.footer:hover .matrix-rain {
+    opacity: 0.2;
+    animation: glitch 0.2s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+    .system-status {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .status-group {
+        width: calc(50% - 10px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .social-links {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .system-status {
+        flex-direction: column;
+    }
+    
+    .status-group {
+        width: 100%;
+    }
+}

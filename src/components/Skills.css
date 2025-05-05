@@ -1,0 +1,317 @@
+/* Skills.css */
+.skills-section {
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Skills dashboard layout */
+.skills-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Skill category styling */
+.skill-category {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.skill-category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.skill-category-name {
+    color: #00ffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
+.skill-category-bar {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, transparent);
+}
+
+/* Frontend category specific color */
+.skill-category:nth-child(1) .skill-category-name {
+    color: #00ffff; /* Cyan */
+}
+.skill-category:nth-child(1) .skill-category-bar {
+    background: linear-gradient(90deg, #00ffff, transparent);
+}
+
+/* Backend category specific color */
+.skill-category:nth-child(2) .skill-category-name {
+    color: #ff00ff; /* Magenta */
+}
+.skill-category:nth-child(2) .skill-category-bar {
+    background: linear-gradient(90deg, #ff00ff, transparent);
+}
+
+/* Cybersecurity category specific color */
+.skill-category:nth-child(3) .skill-category-name {
+    color: #ffff00; /* Yellow */
+}
+.skill-category:nth-child(3) .skill-category-bar {
+    background: linear-gradient(90deg, #ffff00, transparent);
+}
+
+/* Tools category specific color */
+.skill-category:nth-child(4) .skill-category-name {
+    color: #00ff00; /* Green */
+}
+.skill-category:nth-child(4) .skill-category-bar {
+    background: linear-gradient(90deg, #00ff00, transparent);
+}
+
+/* Skill bars container */
+.skill-bars {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 15px;
+    height: 200px;
+}
+
+/* Individual skill bar container */
+.skill-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.skill-name {
+    color: #cccccc;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Skill bar styling */
+.skill-bar-wrapper {
+    width: 20px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #00ffff;
+    transition: height 0.5s ease;
+    animation: pulse 2s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    }
+}
+
+.skill-percentage {
+    color: #000000;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Skill popup styling */
+.skill-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    padding: 15px;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: fadeIn 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.skill-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #00ffff transparent transparent transparent;
+}
+
+.skill-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.skill-popup-name {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.skill-popup-level {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.skill-popup-description {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.skill-popup-projects {
+    margin-top: 10px;
+}
+
+.skill-popup-label {
+    color: #ff00ff;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.skill-popup-projects ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-popup-projects li {
+    color: #cccccc;
+    font-size: 0.8rem;
+    padding: 3px 0;
+    position: relative;
+    padding-left: 15px;
+}
+
+.skill-popup-projects li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #00ffff;
+}
+
+/* System monitor styling */
+.skills-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Scanline effect */
+.skills-dashboard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 255, 255, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+    .skills-dashboard {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skills-dashboard {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .skill-bars {
+        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        gap: 10px;
+    }
+    
+    .skill-bar-wrapper {
+        width: 15px;
+    }
+    
+    .skill-popup {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .skills-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-bars {
+        grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+    }
+}

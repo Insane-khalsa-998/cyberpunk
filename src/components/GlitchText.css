@@ -1,0 +1,96 @@
+/* GlitchText.css */
+.glitch-container {
+    color: #00ffff;
+    font-size: 1.2rem; /* Default size for mobile */
+    position: relative;
+    margin: 0 auto;
+    max-width: 95%;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Responsive font sizes for different screen sizes */
+@media screen and (min-width: 576px) {
+    .glitch-container {
+        font-size: 1.8rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .glitch-container {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        max-width: 90%;
+    }
+}
+
+.glitch-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: wordFadeIn 0.5s forwards;
+}
+
+@keyframes wordFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glitch {
+    display: inline-block;
+    position: relative;
+    color: #00ffff;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #ff00ff;
+    clip: rect(0, 0, 0, 0);
+    animation: glitch 1s infinite linear alternate-reverse;
+}
+
+.glitch::before {
+    animation-delay: 0.2s;
+    color: #ff0000;
+}
+
+@keyframes glitch {
+    0% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(0);
+    }
+    20% {
+        clip: rect(0, 9999px, 5px, 0);
+        transform: translate(-2px, -2px);
+    }
+    40% {
+        clip: rect(0, 9999px, 10px, 0);
+        transform: translate(2px, 2px);
+    }
+    60% {
+        clip: rect(0, 9999px, 5px, 0);
+        transform: translate(-1px, 1px);
+    }
+    80% {
+        clip: rect(0, 9999px, 10px, 0);
+        transform: translate(1px, -1px);
+    }
+    100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translate(0);
+    }
+}

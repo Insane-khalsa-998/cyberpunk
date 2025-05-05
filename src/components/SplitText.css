@@ -1,0 +1,86 @@
+/* SplitText.css */
+.split-text {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: splitFadeIn 0.5s forwards;
+}
+
+@keyframes splitFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Inherit styles from name-text */
+.split-text.name-text {
+  font-size: 3rem; /* Default size for mobile */
+  color: #FFFF00;
+  font-family: 'Cyberpunk', 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+      0 0 10px rgba(255, 255, 0, 0.7),
+      0 0 20px rgba(255, 255, 0, 0.5),
+      0 0 30px rgba(255, 255, 0, 0.3),
+      0 0 40px rgba(255, 0, 85, 0.3);
+  font-weight: 700;
+  position: relative;
+  margin: 0 auto;
+  max-width: 95%;
+  display: block; /* Change from inline-block to block for line break */
+}
+
+/* Responsive font sizes for different screen sizes */
+@media screen and (min-width: 576px) {
+  .split-text.name-text {
+    font-size: 5rem;
+    letter-spacing: 3px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .split-text.name-text {
+    font-size: 8rem;
+    letter-spacing: 4px;
+    max-width: 90%;
+  }
+}
+
+/* Add hover effect */
+.split-text.name-text:hover .split-char {
+  animation: splitGlitch 0.3s infinite;
+  animation-delay: 0s !important;
+}
+
+@keyframes splitGlitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

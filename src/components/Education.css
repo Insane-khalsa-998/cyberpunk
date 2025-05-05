@@ -1,0 +1,378 @@
+/* Education.css */
+.education-section {
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Boot sequence styling */
+.boot-sequence {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 20px;
+    font-family: monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CRT scanline effect */
+.boot-sequence::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 255, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+    animation: scanline 10s linear infinite;
+}
+
+@keyframes scanline {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* Screen flicker effect */
+.boot-sequence {
+    animation: flicker 5s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    93% {
+        opacity: 0.8;
+    }
+    94% {
+        opacity: 1;
+    }
+    98% {
+        opacity: 0.9;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+
+.boot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(0, 255, 255, 0.3);
+}
+
+.boot-prompt {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.boot-status {
+    color: #00ffff;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.boot-time {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.time-label {
+    color: #ff00ff;
+}
+
+.time-value {
+    color: #ffffff;
+}
+
+.boot-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0, 255, 255, 0.3);
+    font-size: 0.9rem;
+}
+
+.memory-usage {
+    color: #ffff00;
+}
+
+/* Education timeline styling */
+.education-timeline {
+    position: relative;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, #00ffff, #ff00ff);
+    z-index: 1;
+}
+
+/* Education entry styling */
+.education-entry {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.education-entry:last-child {
+    margin-bottom: 0;
+}
+
+.education-date {
+    width: 120px;
+    padding-right: 20px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.date-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #00ffff;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.9);
+    }
+}
+
+.date-text {
+    color: #ffff00;
+    font-size: 0.9rem;
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+.education-content {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glitch effect on hover */
+.education-content:hover {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.education-title {
+    color: #00ffff;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.education-institution {
+    color: #ff00ff;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.education-modules {
+    margin-bottom: 15px;
+}
+
+.education-module {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.module-prompt {
+    color: #00ff00;
+    font-size: 0.8rem;
+}
+
+.module-name {
+    color: #ffffff;
+    flex: 1;
+}
+
+.module-status {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.education-achievements {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0, 255, 255, 0.3);
+}
+
+.achievements-header {
+    margin-bottom: 10px;
+}
+
+.achievements-prompt {
+    color: #00ff00;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.achievements-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 5px;
+    color: #cccccc;
+    font-size: 0.85rem;
+}
+
+.achievement-bullet {
+    color: #ffff00;
+    font-size: 0.7rem;
+}
+
+/* BIOS-style boot text animation */
+.boot-header .boot-prompt,
+.boot-footer .boot-prompt {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 2s steps(40, end) 1;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .education-entry {
+        flex-direction: column;
+    }
+    
+    .education-date {
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .date-indicator {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-right: 10px;
+    }
+    
+    .date-text {
+        margin-left: 0;
+    }
+    
+    .education-timeline::before {
+        left: 6px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .boot-header,
+    .boot-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .education-module {
+        flex-wrap: wrap;
+    }
+}
